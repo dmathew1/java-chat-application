@@ -7,23 +7,17 @@ import java.util.concurrent.Executors;
  */
 public class Test {
 
-    public static void noExecutorService(){
-        for(int i=0; i < 10; i++){
-            new Thread(new ChatClient("test")).run();
-        }
-    }
 
     public static void executorService(){
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        for(int i = 0; i < 1; i++){
-            executorService.submit(new ChatClient("test"));
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for(int i = 0; i < 10000; i++){
+            executorService.submit(new ChatClient(i));
         }
         executorService.shutdown();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-//        noExecutorService();
         executorService();
     }
 }

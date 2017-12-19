@@ -23,23 +23,15 @@ public class WorkerThread implements Runnable {
     public void run() {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter pw = new PrintWriter(socket.getOutputStream());
+            PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
 
-            pw.write("Sending from server thread: test\n");
+            pw.write("Test: " + ID++ +"\n");
             pw.flush();
-            while(br!=null && br.read()!=-1){
-                System.out.println("Worker Thread: " + br.readLine());
-            }
+
+            System.out.println(br.readLine());
 
         }catch (IOException e){
             e.printStackTrace();
-        }finally {
-            try {
-                socket.close();
-                System.out.println("closing socket");
-            }catch (IOException e){
-                e.printStackTrace();
-            }
         }
     }
 }
