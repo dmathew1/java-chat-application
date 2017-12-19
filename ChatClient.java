@@ -16,12 +16,19 @@ public class ChatClient implements Runnable{
         Socket socket;
         try{
             socket = new Socket(NETWORK_CONSTANTS.SERVER_ADDRESS,NETWORK_CONSTANTS.SERVER_PORT);
-            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream())); //Receive text
             PrintWriter pw = new PrintWriter(socket.getOutputStream()); //Send text
-            pw.append("Receiving from Thread: " + Thread.currentThread().getId() + " | Request ID: " + ID++);
+            pw.write("Receiving from Client: " + Thread.currentThread().getId() + " | Request ID: " + ID++ +"\n");
             pw.flush();
+            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream())); //Receive text
+            while(br!=null && br.read()!=-1){
+                System.out.println("Client: " + ID++ + " "+ br.readLine());
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        new Thread(new ChatClient("test")).start();
     }
 }

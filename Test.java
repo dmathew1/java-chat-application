@@ -15,7 +15,7 @@ public class Test {
 
     public static void executorService(){
         ExecutorService executorService = Executors.newFixedThreadPool(5);
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 1; i++){
             executorService.submit(new ChatClient("test"));
         }
         executorService.shutdown();

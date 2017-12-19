@@ -41,3 +41,8 @@ where the worker thread will make the connection directly to the client (workert
 
 so ServerSocket --> Socket means that we can get the input and outstream from each Socket and if we aggregate
 all the output streams then we can effectively talk to all clients at once mimicking the "chatroom" experience
+
+Issues: blocking from the bufferedreader from client and server and the bufferedreader turns null
+
+Notes: If youre sending information over and its not being read as a line (br.readline()) then it will block which it did
+for both client and server
