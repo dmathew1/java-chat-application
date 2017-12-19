@@ -46,3 +46,6 @@ Issues: blocking from the bufferedreader from client and server and the buffered
 
 Notes: If youre sending information over and its not being read as a line (br.readline()) then it will block which it did
 for both client and server
+
+*** apparently even with the readline and "\n" it still doesnt work, had to use
+read() != -1 to do my checks
