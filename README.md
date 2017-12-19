@@ -49,3 +49,5 @@ for both client and server
 
 *** apparently even with the readline and "\n" it still doesnt work, had to use
 read() != -1 to do my checks
+
+Issues: Had to remove the blocking conditions on server threads and client threads because they both just deadlock on bufferedreader
