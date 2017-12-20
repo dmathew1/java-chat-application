@@ -25,7 +25,7 @@ public class WorkerThread implements Runnable {
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter pw = new PrintWriter(socket.getOutputStream(),true);
 
-            pw.write("Test: " + ID++ +"\n");
+            pw.println("Test: " + ID++ +"\n");
             pw.flush();
 
             System.out.println(br.readLine());

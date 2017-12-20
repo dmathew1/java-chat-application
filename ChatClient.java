@@ -17,10 +17,13 @@ public class ChatClient implements Runnable{
         try{
             socket = new Socket(NETWORK_CONSTANTS.SERVER_ADDRESS,NETWORK_CONSTANTS.SERVER_PORT);
             PrintWriter pw = new PrintWriter(socket.getOutputStream(),true); //Send text
-            pw.write("Receiving from Client: " + Thread.currentThread().getId() + " | Request ID: " + ID++ +"\n");
+            pw.write(NETWORK_CONSTANTS.GET_TEST);
             pw.flush();
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream())); //Receive text
+
             System.out.println(br.readLine());
+
+
 
         }catch (IOException e){
             e.printStackTrace();

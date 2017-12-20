@@ -31,7 +31,7 @@ Issues:
 Having a problem trying to spawn many threads on the server; i guess this is why the c10k problem exists
 
 
-========================
+================================================
 
 Day 2: Be able to serve up a response back to a browser with the server running; can get a GET request
 
@@ -51,3 +51,15 @@ for both client and server
 read() != -1 to do my checks
 
 Issues: Had to remove the blocking conditions on server threads and client threads because they both just deadlock on bufferedreader
+
+
+================================================
+Day 3: Be able to send a GET request to python server and output response back
+
+Issues: Following HTTP protocol on the java server at this low level
+
+Notes: pw.write("GET / HTTP/1.1\r\n\r\n"); --> I did not realize HTTP specs required twice carriage returns and new lines
+
+c10k problem is for 10k concurrent requests and not 10k sequential requests
+
+So Java client can now send 10k requests to a flask server
