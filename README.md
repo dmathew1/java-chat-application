@@ -63,3 +63,11 @@ Notes: pw.write("GET / HTTP/1.1\r\n\r\n"); --> I did not realize HTTP specs requ
 c10k problem is for 10k concurrent requests and not 10k sequential requests
 
 So Java client can now send 10k requests to a flask server
+
+I was only reading the first line of the response and when adding more readLines i can get the whole response (header and body)
+however I run into an issue where it tries to make multiple requests in one run
+
+BufferedReader terminates upon either EOF or socket closing which if you do System.out.println() on each line
+youll lose the window of time for the socket to stay open
+so resolution is append to a variable
+and upon socket termination print the response variable

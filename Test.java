@@ -10,7 +10,7 @@ public class Test {
 
     public static void executorService(){
         ExecutorService executorService = Executors.newFixedThreadPool(10);
-        for(int i = 0; i < 20000; i++){
+        for(int i = 0; i < 1; i++){
             executorService.submit(new ChatClient(i));
         }
         executorService.shutdown();
