@@ -71,3 +71,16 @@ BufferedReader terminates upon either EOF or socket closing which if you do Syst
 youll lose the window of time for the socket to stay open
 so resolution is append to a variable
 and upon socket termination print the response variable
+
+
+==================================
+Day 4: I havent been able to really dedicate alot of time 
+on this because i was enjoying my time with my girlfriend
+and trying to work on this at the same time
+now that im at my parents i have more time to dedicate towards this
+
+i want to be able to have clients connect from my react app
+to my java server and then have the java server send chat back to the react app
+
+so for now i am focusing on the react side of a chatroom component
+and seeing how to send an update to there from the java side
