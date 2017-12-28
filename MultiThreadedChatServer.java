@@ -53,8 +53,6 @@ public class MultiThreadedChatServer {
                pw.write("exit\n");
                pw.flush();
                writers.remove(this.id);
-//               br.close();
-//               pw.close();
                socket.close();
                Thread.currentThread().interrupt();
                System.out.println("Closing socket...");

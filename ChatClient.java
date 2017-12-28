@@ -61,7 +61,7 @@ public class ChatClient implements Runnable{
                 }
                 closeConnection();
             }catch (IOException e){
-                e.printStackTrace();
+
             }
         }
     }
