@@ -1,3 +1,5 @@
+import com.sun.net.httpserver.HttpServer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by denzel on 12/18/17.
@@ -19,14 +23,17 @@ public class MultiThreadedChatServer {
     private static int ID = 1;
 
     public static void main(String[] args){
+        ExecutorService executors = Executors.newFixedThreadPool(5);
+
         try {
+//            HttpServer httpServer = HttpServer.create();
             serverSocket = new ServerSocket(NETWORK_CONSTANTS.SERVER_PORT);
             System.out.println("Listening on: " + NETWORK_CONSTANTS.SERVER_ADDRESS + ":" + NETWORK_CONSTANTS.SERVER_PORT);
             while (true) {
                 Socket socket = serverSocket.accept();
-                writers.put(ID,new PrintWriter(socket.getOutputStream()));
+                writers.put(ID,new PrintWriter(socket.getOutputStream(),true));
                 System.out.println("Starting new thread...");
-                new Thread(new WorkerThread(ID,socket)).start();
+                executors.execute(new WorkerThread(ID,socket));
                 ID++;
             }
         }catch (IOException e){
@@ -68,7 +75,7 @@ public class MultiThreadedChatServer {
                 String line ="";
                 while (!socket.isClosed()) {
                     line = br.readLine();
-                    if (line.equals("exit")) {
+                    if (line!=null && line.equals("exit")) {
                         closeConnection();
                         break;
                     }

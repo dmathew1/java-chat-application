@@ -74,7 +74,7 @@ and upon socket termination print the response variable
 
 
 ==================================
-Day 4: I havent been able to really dedicate alot of time 
+Day 4: I havent been able to really dedicate alot of time
 on this because i was enjoying my time with my girlfriend
 and trying to work on this at the same time
 now that im at my parents i have more time to dedicate towards this
@@ -84,3 +84,13 @@ to my java server and then have the java server send chat back to the react app
 
 so for now i am focusing on the react side of a chatroom component
 and seeing how to send an update to there from the java side
+
+
+====================================
+Day ...something
+
+I got the chat server to work with multiple clients at the same time (connecting and disconnecting).
+
+Challenges faced: Properly handling input and output streams being closed. Blocking on the reader/writers. Thread run( ) vs start( )..
+
+Now new challenge is to create a client from another language (python) and connect to the chat server ( java )
